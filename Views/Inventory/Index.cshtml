@@ -1,0 +1,70 @@
+﻿@model IEnumerable<TheDeepOWebApp.Models.Inventory>
+
+@{
+    ViewData["Title"] = "Inventory";
+}
+
+<h2>Inventory</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-controller="Inventory" asp-action="Index">
+    <p>
+        Search: <input type="text" name="SearchString" />
+        <input type="submit" value="Go" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemIdentifier)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subcategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OnHandQty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemIdentifier)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subcategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OnHandQty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ItemID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ItemID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ItemID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -27,12 +27,11 @@ namespace TheDeepOWebApp.Models
                 {
                     return;
                 }
-                var adminID = await EnsureUser(serviceProvider, testUserPw, "admin@account.com");
+                /*var adminID = await EnsureUser(serviceProvider, testUserPw, "admin@account.com");
                 await EnsureRole(serviceProvider, adminID, Constants.ContactAdministratorsRole);
                 var managerID = await EnsureUser(serviceProvider, testUserPw, "manager@contoso.com");
-                await EnsureRole(serviceProvider, managerID, Constants.ContactManagersRole);
+                await EnsureRole(serviceProvider, managerID, Constants.ContactManagersRole);*/
 
-                SeedDB(context, adminID);
                 context.Inventory.AddRange(
                     new Inventory
                     {

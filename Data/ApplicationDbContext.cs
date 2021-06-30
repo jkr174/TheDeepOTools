@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,12 +8,13 @@ using TheDeepOWebApp.Models;
 
 namespace TheDeepOWebApp.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext 
+        : IdentityDbContext<IdentityUser<Guid>, IdentityRole<Guid>, Guid>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
-        public DbSet<TheDeepOWebApp.Models.Inventory> Inventory { get; set; }
+        public DbSet<Inventory> Inventory { get; set; }
     }
 }

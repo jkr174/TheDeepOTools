@@ -22,10 +22,15 @@ namespace TheDeepOWebApp.Controllers
         }
 
         // GET: Inventories
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string searchString, string inventoryCategory)
         {
-            var inventory = from i in _context.Inventory select i;
-            if (!String.IsNullOrEmpty(searchString))
+            IQueryable<string> categoryQuery = from i in _context.Inventory
+                                            orderby i.Category
+                                            select i.Category;
+
+            var inventory = from i in _context.Inventory 
+                            select i;
+            if (!string.IsNullOrEmpty(searchString))
             {
                 inventory = inventory.Where(
                     s => s.ItemIdentifier.Contains(searchString)
@@ -34,8 +39,18 @@ namespace TheDeepOWebApp.Controllers
                     || s.Subcategory.Contains(searchString)
                 );
             }
+            if (!string.IsNullOrEmpty(inventoryCategory))
+            {
+                inventory = inventory.Where(x => x.Category == inventoryCategory);
+            }
 
-            return View(await inventory.ToListAsync());
+            var inventoryCategoryVM = new InventoryCategoryViewModel
+            {
+                Categories = new SelectList(await categoryQuery.Distinct().ToListAsync()),
+                Inventories = await inventory.ToListAsync()
+            };
+
+            return View(inventoryCategoryVM);
         }
 
         // GET: Inventories/Details/5

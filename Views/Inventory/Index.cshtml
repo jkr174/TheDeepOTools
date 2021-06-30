@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TheDeepOWebApp.Models.Inventory>
+﻿@model TheDeepOWebApp.Models.InventoryCategoryViewModel
 
 @{
     ViewData["Title"] = "Inventory";
@@ -9,8 +9,11 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<form asp-controller="Inventory" asp-action="Index">
+<form asp-controller="Inventory" asp-action="Index" method="get">
     <p>
+        Category: <select asp-for="InventoryCategory" asp-items="Model.Categories">
+            <option value="">All</option>
+        </select>
         Search: <input type="text" name="SearchString" />
         <input type="submit" value="Go" />
     </p>
@@ -19,27 +22,28 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ItemIdentifier)
+                @Html.DisplayNameFor(model => model.Inventories[0].ItemIdentifier)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ItemName)
+                @Html.DisplayNameFor(model => model.Inventories[0].ItemName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Category)
+                @Html.DisplayNameFor(model => model.Inventories[0].Category)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Subcategory)
+                @Html.DisplayNameFor(model => model.Inventories[0].Subcategory)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OnHandQty)
+                @Html.DisplayNameFor(model => model.Inventories[0].OnHandQty)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayNameFor(model => model.Inventories[0].Price)
             </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Inventories) 
+{
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.ItemIdentifier)

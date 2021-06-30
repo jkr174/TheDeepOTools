@@ -35,7 +35,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="Category" class="control-label"></label>
-                <input asp-for="Category" class="form-control" />
+                <br />
+                <select asp-for="Category">
+                    <option value="Cutters">Cutters</option>
+                    <option value="Breakers">Breakers</option>
+                    <option value="Generators">Generators</option>
+                    <option value="Drain Cleaners">Drain Cleaners</option>
+                    <option value="Air Compressors & Nail Guns">Air Compressors & Nail Guns</option>
+                    <option value="Pressure Washers">Pressure Washers</option>
+                    <option value="Leafblowers">Leafblowers</option>
+                    <option value="Floor Cleaners">Floor Cleaners</option>
+                    <option value="Large Eqiupment">Large Eqiupment</option>
+                </select>
                 <span asp-validation-for="Category" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -69,6 +80,7 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
+@section Scripts 
+{
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

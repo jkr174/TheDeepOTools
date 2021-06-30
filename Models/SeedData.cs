@@ -7,21 +7,32 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using TheDeepOWebApp.Data;
 using TheDeepOWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
+using Microsoft.AspNetCore.Identity;
 
 namespace TheDeepOWebApp.Models
 {
     public static class SeedData
     {
-        public static void Initialize(IServiceProvider serviceProvider)
+        public static async Task Initialize(IServiceProvider serviceProvider, string testUserPw)
         {
             using (var context = new ApplicationDbContext(
                 serviceProvider.GetRequiredService<
                     DbContextOptions<ApplicationDbContext>>()))
             {
+                
+
                 if (context.Inventory.Any())
                 {
                     return;
                 }
+                var adminID = await EnsureUser(serviceProvider, testUserPw, "admin@account.com");
+                await EnsureRole(serviceProvider, adminID, Constants.ContactAdministratorsRole);
+                var managerID = await EnsureUser(serviceProvider, testUserPw, "manager@contoso.com");
+                await EnsureRole(serviceProvider, managerID, Constants.ContactManagersRole);
+
+                SeedDB(context, adminID);
                 context.Inventory.AddRange(
                     new Inventory
                     {
@@ -35,7 +46,7 @@ namespace TheDeepOWebApp.Models
                         TotalQty = 1
                     },
                     new Inventory
-                        {
+                    {
                         ItemName = "Makita Breaker",
                         ItemIdentifier = "BK-MBKER-1",
                         Description = "Jackhammers, the combination of a hammer and a chisel.",
@@ -46,7 +57,7 @@ namespace TheDeepOWebApp.Models
                         TotalQty = 1
                     },
                     new Inventory
-                        {
+                    {
                         ItemName = "Honda 6500 Watt Generator",
                         ItemIdentifier = "GN-HA-6500GEN-1",
                         Description = "In case of an emergency, so you're not out of power.",
@@ -130,6 +141,50 @@ namespace TheDeepOWebApp.Models
                     );
                 context.SaveChanges();
             }
+        }
+        private static async Task<string> EnsureUser(IServiceProvider serviceProvider,
+                                            string testUserPw, string UserName)
+        {
+            var userManager = serviceProvider.GetService<UserManager<IdentityUser>>();
+
+            var user = await userManager.FindByNameAsync(UserName);
+            if (user == null)
+            {
+                user = new IdentityUser { UserName = UserName };
+                await userManager.CreateAsync(user, testUserPw);
+            }
+
+            return user.Id;
+
+        }
+        private static async Task<IdentityResult> EnsureRole(IServiceProvider serviceProvider,
+                                                              string uid, string role)
+        {
+            IdentityResult IR = null;
+            var roleManager = serviceProvider.GetService<RoleManager<IdentityRole>>();
+
+            if (roleManager == null)
+            {
+                throw new Exception("roleManager null");
+            }
+
+            if (!await roleManager.RoleExistsAsync(role))
+            {
+                IR = await roleManager.CreateAsync(new IdentityRole(role));
+            }
+
+            var userManager = serviceProvider.GetService<UserManager<IdentityUser>>();
+
+            var user = await userManager.FindByIdAsync(uid);
+
+            if (user == null)
+            {
+                throw new Exception("The testUserPw password was probably not strong enough!");
+            }
+
+            IR = await userManager.AddToRoleAsync(user, role);
+
+            return IR;
         }
     }
 }

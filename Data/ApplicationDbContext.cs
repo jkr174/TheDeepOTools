@@ -9,7 +9,7 @@ using TheDeepOWebApp.Models;
 namespace TheDeepOWebApp.Data
 {
     public class ApplicationDbContext 
-        : IdentityDbContext
+        : IdentityDbContext<IdentityUser<Guid>, IdentityRole<Guid>, Guid>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

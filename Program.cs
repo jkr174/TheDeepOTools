@@ -24,14 +24,12 @@ namespace TheDeepOWebApp
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                var config = host.Services.GetRequiredService<IConfiguration>();
-                var testUserPw = config["SeedUserPW"];
 
                 try
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
                     context.Database.Migrate();
-                    SeedData.Initialize(services, testUserPw).Wait();
+                    SeedData.Initialize(services);
                 }
                 catch (Exception ex)
                 {

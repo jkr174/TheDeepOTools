@@ -9,12 +9,15 @@ using TheDeepOWebApp.Models;
 namespace TheDeepOWebApp.Data
 {
     public class ApplicationDbContext 
-        : IdentityDbContext<IdentityUser<Guid>, IdentityRole<Guid>, Guid>
+        : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
         public DbSet<Inventory> Inventory { get; set; }
+        public UserState State { get; set; }
+        public DbSet<RepairTicket> RepairTickets { get; set; }
+        public DbSet<RepairTicketMessage> RepairTicketMessages { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TheDeepOWebApp.Data;
 
-namespace TheDeepOWebApp.Data.Migrations
+namespace TheDeepOWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -237,7 +237,7 @@ namespace TheDeepOWebApp.Data.Migrations
 
                     b.Property<byte?>("OwnerState");
 
-                    b.Property<byte>("State");
+                    b.Property<string>("State");
 
                     b.Property<string>("Title");
 

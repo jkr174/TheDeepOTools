@@ -20,9 +20,22 @@ namespace TheDeepOWebApp.Controllers
         }
 
         // GET: RepairTickets
-        public async Task<IActionResult> Index()
+        public async Task<ActionResult> Index(string searchString)
         {
-            return View(await _context.RepairTickets.ToListAsync());
+            var repairTickets = from i in _context.RepairTickets
+                                select i;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+               repairTickets = repairTickets.Where(
+                   s => s.Id.Equals(searchString)
+                   || s.Title.Contains(searchString)
+                   || s.Description.Contains(searchString)
+                   || s.State.Equals(searchString)
+                   );
+            }
+
+            return View(await repairTickets.ToListAsync());
         }
 
         // GET: RepairTickets/Details/5

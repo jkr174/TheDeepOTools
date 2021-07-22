@@ -1,8 +1,9 @@
 ﻿@model TheDeepOWebApp.Models.RepairTicket
+@using Microsoft.AspNetCore.Identity
 
-@{
-    ViewData["Title"] = "Create";
-}
+@inject UserManager<IdentityUser> UserManager
+
+@{ ViewData["Title"] = "Create"; }
 
 <h2>Create</h2>
 
@@ -19,17 +20,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
+                <textarea style="resize:none" asp-for="Description" class="form-control" rows="10"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="State" class="control-label"></label>
-                <select asp-for="State" class="form-control"></select>
+                <input asp-for="State" class="form-control" value="Open" type="hidden"/>
                 <span asp-validation-for="State" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="OwnerId" class="control-label"></label>
-                <input asp-for="OwnerId" class="form-control" />
+                <input asp-for="OwnerId" class="form-control" value="@UserManager.GetUserName(User)" type="hidden"/>
                 <span asp-validation-for="OwnerId" class="text-danger"></span>
             </div>
             <div class="form-group">

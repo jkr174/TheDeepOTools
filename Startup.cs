@@ -13,10 +13,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TheDeepOWebApp.Data;
-using TheDeepOWebApp.Models;
+using TheDeepOTools.Areas.Identity.Data;
+using TheDeepOTools.Data;
 
-namespace TheDeepOWebApp
+namespace TheDeepOTools
 {
     public class Startup
     {
@@ -37,23 +37,24 @@ namespace TheDeepOWebApp
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+            services.AddDbContext<ApplicationDbContext>(options => 
+            options.UseSqlServer(
+                Configuration.GetConnectionString("ApplicationDbContextConnection")));
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                    .AddEntityFrameworkStores<ApplicationDbContext>()
+                    .AddDefaultUI()
+                    .AddDefaultTokenProviders();
 
             services.AddMvc(config =>
             {
-                // using Microsoft.AspNetCore.Mvc.Authorization;
-                // using Microsoft.AspNetCore.Authorization;
                 var policy = new AuthorizationPolicyBuilder()
                                  .RequireAuthenticatedUser()
                                  .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
-            })
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<TheDeepOToolsContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("TheDeepOToolsContext")));
 
             services.ConfigureApplicationCookie(options =>
             {
@@ -61,6 +62,7 @@ namespace TheDeepOWebApp
                 options.LogoutPath = $"/Identity/Account/Logout";
                 options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
             });
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,7 +71,6 @@ namespace TheDeepOWebApp
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -80,6 +81,7 @@ namespace TheDeepOWebApp
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseAuthentication();
+            app.UseCookiePolicy();
 
             app.UseMvc(routes =>
             {

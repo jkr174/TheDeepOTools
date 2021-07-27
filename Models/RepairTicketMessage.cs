@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using TheDeepOTools.Areas.Identity.Data;
 
-namespace TheDeepOWebApp.Models
+namespace TheDeepOTools.Models
 {
     public class RepairTicketMessage
     {

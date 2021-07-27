@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace TheDeepOWebApp.Models
+namespace TheDeepOTools.Models
 {
     public class Inventory
     {

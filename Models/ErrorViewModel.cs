@@ -1,6 +1,6 @@
 using System;
 
-namespace TheDeepOWebApp.Models
+namespace TheDeepOTools.Models
 {
     public class ErrorViewModel
     {

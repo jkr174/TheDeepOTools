@@ -2,21 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using TheDeepOWebApp.Data;
-using TheDeepOWebApp.Models;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Authorization;
+using TheDeepOTools.Data;
+using TheDeepOTools.Models;
 
-namespace TheDeepOWebApp.Controllers
+namespace TheDeepOTools.Controllers
 {
     public class InventoryController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly TheDeepOToolsContext _context;
 
-        public InventoryController(ApplicationDbContext context)
+        public InventoryController(TheDeepOToolsContext context)
         {
             _context = context;
         }
@@ -25,10 +24,10 @@ namespace TheDeepOWebApp.Controllers
         public async Task<IActionResult> Index(string searchString, string inventoryCategory)
         {
             IQueryable<string> categoryQuery = from i in _context.Inventory
-                                            orderby i.Category
-                                            select i.Category;
+                                               orderby i.Category
+                                               select i.Category;
 
-            var inventory = from i in _context.Inventory 
+            var inventory = from i in _context.Inventory
                             select i;
             if (!string.IsNullOrEmpty(searchString))
             {

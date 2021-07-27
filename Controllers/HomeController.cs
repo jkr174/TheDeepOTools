@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using TheDeepOWebApp.Models;
+using TheDeepOTools.Models;
 
-namespace TheDeepOWebApp.Controllers
+namespace TheDeepOTools.Controllers
 {
     public class HomeController : Controller
     {

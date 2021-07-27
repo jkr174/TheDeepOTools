@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TheDeepOWebApp.Models.RepairTicket>
+﻿@model IEnumerable<TheDeepOTools.Models.RepairTicket>
 
 @{
     ViewData["Title"] = "Index";
@@ -25,7 +25,7 @@
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.State)
+                @Html.DisplayNameFor(model => model.TicketState)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.OwnerId)
@@ -43,7 +43,7 @@
                 @Html.DisplayFor(modelItem => item.DescLimit)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.State)
+                @Html.DisplayFor(modelItem => item.TicketState)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OwnerId)

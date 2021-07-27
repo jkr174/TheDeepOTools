@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using TheDeepOTools.Areas.Identity.Data;
 
-namespace TheDeepOWebApp.Models
+namespace TheDeepOTools.Models
 {
     public class RepairTicket
     {
@@ -33,7 +34,7 @@ namespace TheDeepOWebApp.Models
                     return Title;
             }
         }
-        public TicketState State { get; set; }
+        public string TicketState { get; set; }
         public string OwnerId { get; set; }
         public ApplicationUser Owner { get; set; }
         public IEnumerable<RepairTicketMessage> Messages { get; set; }

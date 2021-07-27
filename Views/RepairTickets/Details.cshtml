@@ -1,4 +1,4 @@
-﻿@model TheDeepOWebApp.Models.RepairTicket
+﻿@model TheDeepOTools.Models.RepairTicket
 
 @{
     ViewData["Title"] = "Details";
@@ -23,10 +23,10 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.State)
+            @Html.DisplayNameFor(model => model.TicketState)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.State)
+            @Html.DisplayFor(model => model.TicketState)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.OwnerId)

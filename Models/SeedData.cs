@@ -5,36 +5,36 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using TheDeepOWebApp.Data;
-using TheDeepOWebApp.Models;
+using TheDeepOTools.Data;
+using TheDeepOTools.Models;
 
-namespace TheDeepOWebApp.Models
+namespace TheDeepOTools.Models
 {
     public static class SeedData
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            using (var context = new ApplicationDbContext(
+            using (var context = new TheDeepOToolsContext(
                 serviceProvider.GetRequiredService<
-                    DbContextOptions<ApplicationDbContext>>()))
+                    DbContextOptions<TheDeepOToolsContext>>()))
             {
-                if (context.RepairTickets.Any())
+                if (context.RepairTicket.Any())
                 {
                     return;
                 }
-                context.RepairTickets.AddRange(
+                context.RepairTicket.AddRange(
                     new RepairTicket
                     {
                         Title = "TitleTest1",
                         Description = "DescTest1",
-                        State = TicketState.Open,
+                        TicketState = "Open",
                         OwnerId = "UserTest1"
                     },
                     new RepairTicket
                     {
                         Title = "TitleTest2",
                         Description = "DescTest2",
-                        State = TicketState.Closed,
+                        TicketState = "Closed",
                         OwnerId = "UserTest2"
                     }
                     );

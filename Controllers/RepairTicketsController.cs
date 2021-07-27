@@ -5,37 +5,26 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using TheDeepOWebApp.Data;
-using TheDeepOWebApp.Models;
+using TheDeepOTools.Areas.Identity.Data;
+using TheDeepOTools.Data;
+using TheDeepOTools.Models;
 
-namespace TheDeepOWebApp.Controllers
+namespace TheDeepOTools.Controllers
 {
     public class RepairTicketsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly TheDeepOToolsContext _context;
 
-        public RepairTicketsController(ApplicationDbContext context)
+        public RepairTicketsController(TheDeepOToolsContext context)
         {
             _context = context;
         }
 
         // GET: RepairTickets
-        public async Task<ActionResult> Index(string searchString)
+        public async Task<IActionResult> Index()
         {
-            var repairTickets = from i in _context.RepairTickets
-                                select i;
-
-            if (!string.IsNullOrEmpty(searchString))
-            {
-               repairTickets = repairTickets.Where(
-                   s => s.Id.Equals(searchString)
-                   || s.Title.Contains(searchString)
-                   || s.Description.Contains(searchString)
-                   || s.State.Equals(searchString)
-                   );
-            }
-
-            return View(await repairTickets.ToListAsync());
+            var theDeepOToolsContext = _context.RepairTicket.Include(r => r.Owner);
+            return View(await theDeepOToolsContext.ToListAsync());
         }
 
         // GET: RepairTickets/Details/5
@@ -46,7 +35,8 @@ namespace TheDeepOWebApp.Controllers
                 return NotFound();
             }
 
-            var repairTicket = await _context.RepairTickets
+            var repairTicket = await _context.RepairTicket
+                .Include(r => r.Owner)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (repairTicket == null)
             {
@@ -59,6 +49,7 @@ namespace TheDeepOWebApp.Controllers
         // GET: RepairTickets/Create
         public IActionResult Create()
         {
+            ViewData["OwnerId"] = new SelectList(_context.Set<ApplicationUser>(), "Id", "Id");
             return View();
         }
 
@@ -67,7 +58,7 @@ namespace TheDeepOWebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,State,OwnerId")] RepairTicket repairTicket)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,TicketState,OwnerId")] RepairTicket repairTicket)
         {
             if (ModelState.IsValid)
             {
@@ -76,6 +67,7 @@ namespace TheDeepOWebApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["OwnerId"] = new SelectList(_context.Set<ApplicationUser>(), "Id", "Id", repairTicket.OwnerId);
             return View(repairTicket);
         }
 
@@ -87,11 +79,12 @@ namespace TheDeepOWebApp.Controllers
                 return NotFound();
             }
 
-            var repairTicket = await _context.RepairTickets.FindAsync(id);
+            var repairTicket = await _context.RepairTicket.FindAsync(id);
             if (repairTicket == null)
             {
                 return NotFound();
             }
+            ViewData["OwnerId"] = new SelectList(_context.Set<ApplicationUser>(), "Id", "Id", repairTicket.OwnerId);
             return View(repairTicket);
         }
 
@@ -100,7 +93,7 @@ namespace TheDeepOWebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Title,Description,State,OwnerId")] RepairTicket repairTicket)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Title,Description,TicketState,OwnerId")] RepairTicket repairTicket)
         {
             if (id != repairTicket.Id)
             {
@@ -127,6 +120,7 @@ namespace TheDeepOWebApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["OwnerId"] = new SelectList(_context.Set<ApplicationUser>(), "Id", "Id", repairTicket.OwnerId);
             return View(repairTicket);
         }
 
@@ -138,7 +132,8 @@ namespace TheDeepOWebApp.Controllers
                 return NotFound();
             }
 
-            var repairTicket = await _context.RepairTickets
+            var repairTicket = await _context.RepairTicket
+                .Include(r => r.Owner)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (repairTicket == null)
             {
@@ -153,15 +148,15 @@ namespace TheDeepOWebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var repairTicket = await _context.RepairTickets.FindAsync(id);
-            _context.RepairTickets.Remove(repairTicket);
+            var repairTicket = await _context.RepairTicket.FindAsync(id);
+            _context.RepairTicket.Remove(repairTicket);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool RepairTicketExists(Guid id)
         {
-            return _context.RepairTickets.Any(e => e.Id == id);
+            return _context.RepairTicket.Any(e => e.Id == id);
         }
     }
 }

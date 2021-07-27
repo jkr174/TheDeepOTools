@@ -1,0 +1,20 @@
+﻿@model Dictionary<string, object>
+
+@{
+    ViewData["Title"] = "AppUsers";
+}
+
+<h2>App Users</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<h4>User Details</h4>
+
+<table class="table">
+    @foreach (var kvp in Model)
+            {
+                <tr><th>@kvp.Key</th><td>@kvp.Value</td></tr>
+            }
+</table> 

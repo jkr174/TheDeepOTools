@@ -5,14 +5,16 @@ using System.Threading.Tasks;
 using TheDeepOWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using TheDeepOWebApp.Data;
+using TheDeepOTools.Models;
+using TheDeepOTools.Data;
 
-namespace TheDeepOWebApp.Controllers
+namespace TheDeepOTools.Controllers
 {
     public class BackUpAdminController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly TheDeepOToolsContext _context;
 
-        public BackUpAdminController(ApplicationDbContext context)
+        public BackUpAdminController(TheDeepOToolsContext context)
         {
             _context = context;
         }

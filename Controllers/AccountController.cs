@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using TheDeepOTools.Models;
 using TheDeepOWebApp.Models;
 
 namespace TheDeepOWebApp.Controllers

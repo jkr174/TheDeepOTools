@@ -5,12 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TheDeepOTools.Data;
 using TheDeepOWebApp.Data;
 
 namespace TheDeepOWebApp.Data.Migrations
 {
-    [DbContext(typeof(TheDeepOToolsContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20210622225900_Initial")]
     partial class Initial
     {

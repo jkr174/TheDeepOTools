@@ -173,7 +173,7 @@ namespace TheDeepOTools.Data
                 var user = await userManager.FindByEmailAsync(defaultUser.Email);
                 if (user == null)
                 {
-                    await userManager.CreateAsync(defaultUser, "123Pa$$word.");
+                    await userManager.CreateAsync(defaultUser, "Jr@38257");
                     await userManager.AddToRoleAsync(defaultUser, Enums.Roles.Basic.ToString());
                     await userManager.AddToRoleAsync(defaultUser, Enums.Roles.Moderator.ToString());
                     await userManager.AddToRoleAsync(defaultUser, Enums.Roles.Admin.ToString());

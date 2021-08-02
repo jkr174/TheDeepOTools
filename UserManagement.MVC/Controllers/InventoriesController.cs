@@ -184,5 +184,19 @@ namespace TheDeepOTools.Controllers
         {
             return _context.Inventory.Any(e => e.ItemID == id);
         }
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Checkout([Bind("Id,Title,Description,TicketState,OwnerId,Owner")] RepairTicket repairTicket)
+        {
+            if (ModelState.IsValid)
+            {
+                repairTicket.Id = Guid.NewGuid();
+                _context.Add(repairTicket);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(repairTicket);
+        }
     }
 }

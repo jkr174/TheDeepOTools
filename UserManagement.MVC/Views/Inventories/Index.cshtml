@@ -1,0 +1,83 @@
+﻿@model TheDeepOTools.Models.InventoryCategoryViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @if (ViewContext.HttpContext.User.IsInRole("Admin") || User.IsInRole("Moderator") || User.IsInRole("SuperAdmin"))
+            {
+                <a asp-action="Create">Create New</a>
+            }
+    
+</p>
+<form asp-controller="Inventories" asp-action="Index" method="get">
+    <p>
+        Category: <select asp-for="InventoryCategory" asp-items="Model.Categories">
+            <option value="">All</option>
+        </select>
+        Search: <input type="text" name="SearchString" />
+        <input type="submit" value="Go" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Inventories[0].ItemIdentifier)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inventories[0].ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inventories[0].Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inventories[0].Subcategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inventories[0].OnHandQty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inventories[0].Price)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Inventories)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemIdentifier)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subcategory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OnHandQty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @if (ViewContext.HttpContext.User.IsInRole("Admin") || User.IsInRole("Moderator") || User.IsInRole("SuperAdmin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.ItemID">Edit</a>
+                        <br />
+                        <a asp-action="Delete" asp-route-id="@item.ItemID">Delete</a>
+                        <br />
+                    }
+                    <a asp-action="Details" asp-route-id="@item.ItemID">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,88 @@
+﻿@model TheDeepOTools.Models.Inventory
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Inventory</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ItemID" />
+            <div class="form-group">
+                <label asp-for="ItemIdentifier" class="control-label"></label>
+                <input asp-for="ItemIdentifier" class="form-control" />
+                <span asp-validation-for="ItemIdentifier" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItemName" class="control-label"></label>
+                <input asp-for="ItemName" class="form-control" />
+                <span asp-validation-for="ItemName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <br />
+                <select asp-for="Category">
+                    <option value="Cutters">Cutters</option>
+                    <option value="Breakers">Breakers</option>
+                    <option value="Generators">Generators</option>
+                    <option value="Drain Cleaners">Drain Cleaners</option>
+                    <option value="Air Compressors & Nail Guns">Air Compressors & Nail Guns</option>
+                    <option value="Pressure Washers">Pressure Washers</option>
+                    <option value="Leafblowers">Leafblowers</option>
+                    <option value="Floor Cleaners">Floor Cleaners</option>
+                    <option value="Large Eqiupment">Large Eqiupment</option>
+                </select>
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subcategory" class="control-label"></label>
+                <input asp-for="Subcategory" class="form-control" />
+                <span asp-validation-for="Subcategory" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OnHandQty" class="control-label"></label>
+                <input asp-for="OnHandQty" class="form-control" />
+                <span asp-validation-for="OnHandQty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OutQty" class="control-label"></label>
+                <input asp-for="OutQty" class="form-control" />
+                <span asp-validation-for="OutQty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalQty" class="control-label"></label>
+                <input asp-for="TotalQty" class="form-control" />
+                <span asp-validation-for="TotalQty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+    <br/>
+    <a asp-action="Checkout">Checkout</a>
+</div>
+
+@section Scripts
+{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -151,17 +151,17 @@ namespace TheDeepOTools.Data
         public static async Task SeedRolesAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             //Seed Roles
-            await roleManager.CreateAsync(new IdentityRole(Enums.Roles.SuperAdmin.ToString()));
+            await roleManager.CreateAsync(new IdentityRole(Enums.Roles.Manager.ToString()));
             await roleManager.CreateAsync(new IdentityRole(Enums.Roles.Admin.ToString()));
-            await roleManager.CreateAsync(new IdentityRole(Enums.Roles.Moderator.ToString()));
-            await roleManager.CreateAsync(new IdentityRole(Enums.Roles.Basic.ToString()));
+            await roleManager.CreateAsync(new IdentityRole(Enums.Roles.FloorAssoicate.ToString()));
+            await roleManager.CreateAsync(new IdentityRole(Enums.Roles.RepairTech.ToString()));
         }
         public static async Task SeedSuperAdminAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             //Seed Default User
             var defaultUser = new ApplicationUser
             {
-                UserName = "superadmin",
+                UserName = "admin",
                 Email = "superadmin@gmail.com",
                 FirstName = "Jovany",
                 LastName = "Romo",
@@ -174,10 +174,10 @@ namespace TheDeepOTools.Data
                 if (user == null)
                 {
                     await userManager.CreateAsync(defaultUser, "Jr@38257");
-                    await userManager.AddToRoleAsync(defaultUser, Enums.Roles.Basic.ToString());
-                    await userManager.AddToRoleAsync(defaultUser, Enums.Roles.Moderator.ToString());
+                    await userManager.AddToRoleAsync(defaultUser, Enums.Roles.FloorAssoicate.ToString());
+                    await userManager.AddToRoleAsync(defaultUser, Enums.Roles.Manager.ToString());
                     await userManager.AddToRoleAsync(defaultUser, Enums.Roles.Admin.ToString());
-                    await userManager.AddToRoleAsync(defaultUser, Enums.Roles.SuperAdmin.ToString());
+                    await userManager.AddToRoleAsync(defaultUser, Enums.Roles.RepairTech.ToString());
                 }
 
             }

@@ -1,4 +1,4 @@
-﻿@model TheDeepOTools.Models.RepairTicket
+﻿@model TheDeepOTools.Models.RepairTicketInventoryViewModel
 @using Microsoft.AspNetCore.Identity
 @inject UserManager<ApplicationUser> UserManager
 
@@ -15,8 +15,13 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
+                <label asp-for="Title" class="control-label">Item</label>
+                <select asp-for="Title" class="form-control">
+                    @foreach (var item in Model.Inventories)
+                    {
+                    <option value="@Html.DisplayFor(modelItem => item.ItemIdentifier)">@Html.DisplayFor(modelItem => item.ItemIdentifier)</option>
+                    }
+                </select>
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">

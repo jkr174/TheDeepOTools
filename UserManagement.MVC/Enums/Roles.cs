@@ -7,9 +7,9 @@ namespace TheDeepOTools.Enums
 {
     public enum Roles
     {
-        SuperAdmin,
         Admin,
-        Moderator,
-        Basic
+        Manager,
+        RepairTech,
+        FloorAssoicate
     }
 }

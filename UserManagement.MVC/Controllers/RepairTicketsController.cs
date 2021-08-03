@@ -79,7 +79,24 @@ namespace TheDeepOTools.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
-            return View();
+            var itemList = new RepairTicketItemViewModel();
+            itemList.ListItems = GetItems();
+
+            return View(itemList);
+        }
+
+        private IEnumerable<SelectListItem> GetItems()
+        {
+            List<SelectListItem> items = _context.Inventory
+                .OrderBy(n => n.ItemIdentifier)
+                .Select(n =>
+                new SelectListItem
+                {
+                    Value = n.ItemIdentifier,
+                    Text = n.ItemIdentifier
+                }).ToList();
+
+            return new SelectList(items, "Value", "Text");
         }
 
         // POST: RepairTickets/Create

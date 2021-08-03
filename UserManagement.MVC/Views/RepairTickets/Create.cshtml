@@ -1,4 +1,4 @@
-﻿@model TheDeepOTools.Models.RepairTicketInventoryViewModel
+﻿@model TheDeepOTools.Models.RepairTicketItemViewModel
 @using Microsoft.AspNetCore.Identity
 @inject UserManager<ApplicationUser> UserManager
 
@@ -16,17 +16,14 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label">Item</label>
-                <select asp-for="Title" class="form-control">
-                    @foreach (var item in Model.Inventories)
-                    {
-                    <option value="@Html.DisplayFor(modelItem => item.ItemIdentifier)">@Html.DisplayFor(modelItem => item.ItemIdentifier)</option>
-                    }
+                <select asp-for="Title"
+                        asp-items="@(new SelectList(Model.ListItems, "Value", "Text"))">
                 </select>
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
+                <textarea style="resize:none" asp-for="Description" class="form-control" rows="10"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -34,11 +31,11 @@
                 <span asp-validation-for="TicketState" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input asp-for="OwnerId" class="form-control" value="@UserManager.GetUserId(User)" type="hidden"/>
+                <input asp-for="OwnerId" class="form-control" value="@UserManager.GetUserAsync(User).Result.UserName" type="hidden"/>
                 <span asp-validation-for="OwnerId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input asp-for="Owner" class="form-control" value="@UserManager.GetUserName(User)" type="hidden"/>
+                <input asp-for="Owner" class="form-control" value="@UserManager.GetUserAsync(User).Result.FirstName" type="hidden"/>
                 <span asp-validation-for="Owner" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -52,6 +49,7 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
+@section Scripts 
+{
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

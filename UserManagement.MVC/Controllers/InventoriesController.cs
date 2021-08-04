@@ -185,57 +185,5 @@ namespace TheDeepOTools.Controllers
         {
             return _context.Inventory.Any(e => e.ItemID == id);
         }
-        // GET: Inventories/Edit/5
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Checkout(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var inventory = await _context.Inventory.FindAsync(id);
-            if (inventory == null)
-            {
-                return NotFound();
-            }
-            return View(inventory);
-        }
-
-        // POST: Inventories/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "Admin" )]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Checkout(int id, [Bind("ItemID,ItemIdentifier,ItemName,Description,Price,Category,Subcategory,OnHandQty,OutQty,TotalQty")] Inventory inventory)
-        {
-            if (id != inventory.ItemID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(inventory);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!InventoryExists(inventory.ItemID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(inventory);
-        }
     }
 }

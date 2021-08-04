@@ -53,7 +53,7 @@ namespace TheDeepOTools.Data
                 entity.ToTable("UserTokens");
             });
         }
-        public DbSet<TheDeepOTools.Models.Inventory> Inventory { get; set; }
-        public DbSet<TheDeepOTools.Models.RepairTicket> RepairTicket { get; set; }
+        public DbSet<Inventory> Inventory { get; set; }
+        public DbSet<RepairTicket> RepairTicket { get; set; }
     }
 }

@@ -28,8 +28,8 @@ namespace TheDeepOTools.Data
                             Title = "CB-CR-MAKITA-1",
                             Description = "This item has many issues and needs to be fixed.",
                             TicketState = "Open",
-                            OwnerId = "romo17410",
-                            Owner = "romo17410@gmail.com"
+                            OwnerId = "romo17410@gmail.com",
+                            Owner = "Jovany"
                         });
                 }
                 if (context.Inventory.Any())

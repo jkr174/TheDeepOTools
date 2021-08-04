@@ -8,9 +8,8 @@ namespace TheDeepOTools.Models
 {
     public class InventoryRepairViewModel : RepairTicket
     {
-        public List<Inventory> Inventories { get; set; }
-        public SelectList Categories { get; set; }
-        public string InventoryCategory { get; set; }
-        public string SearchString { get; set; }
+        public string SelectedItemId { get; set; }
+        public IEnumerable<SelectListItem> ListItems { get; set; }
+        public string ItemIdentifier { get; set; }
     }
 }

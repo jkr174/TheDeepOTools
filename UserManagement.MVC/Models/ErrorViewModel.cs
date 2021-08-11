@@ -1,11 +1,6 @@
 /* Name:    Jovany Romo
- * Date:    7/5/2021
- * Summary: 
- * 
- * Inputs:  
- *  
- * Outputs:    
- * 
+ * Date:    6/3/2021
+ * Summary: Default error view model for MVC
  */
 
 namespace TheDeepOTools.Models

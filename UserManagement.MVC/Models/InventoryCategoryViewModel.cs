@@ -1,11 +1,6 @@
 ﻿/* Name:    Jovany Romo
  * Date:    7/5/2021
- * Summary: 
- * 
- * Inputs:  
- *  
- * Outputs:    
- * 
+ * Summary: ViewModel for the search functionality to work for Inventory.
  */
 
 using Microsoft.AspNetCore.Mvc.Rendering;

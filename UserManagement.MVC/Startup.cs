@@ -1,11 +1,6 @@
 /* Name:    Jovany Romo
  * Date:    6/3/2021
- * Summary: 
- * 
- * Inputs:  
- *  
- * Outputs:    
- * 
+ * Summary: Default startup class for MVC
  */
 
 using Microsoft.AspNetCore.Builder;

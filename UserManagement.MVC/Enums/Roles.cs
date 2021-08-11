@@ -1,11 +1,8 @@
 ﻿/* Name:    Jovany Romo
- * Date:    7/5/2021
- * Summary: 
+ * Date:    7/26/2021
+ * Summary: Class for the default roles in the web application.
  * 
- * Inputs:  
- *  
- * Outputs:    
- * 
+ * Outputs: Roles for the web application to use.
  */
 
 namespace TheDeepOTools.Enums

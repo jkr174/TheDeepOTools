@@ -1,11 +1,6 @@
 ﻿/* Name:    Jovany Romo
  * Date:    7/5/2021
- * Summary: 
- * 
- * Inputs:  
- *  
- * Outputs:    
- * 
+ * Summary: RepairTicketMessage Model class for the data to be used in a repair ticket.
  */
 
 using System;
@@ -17,12 +12,12 @@ namespace TheDeepOTools.Models
     {
         [Key]
         public Guid Id { get; set; }
-        public String Message { get; set; }
+        public string Message { get; set; }
         public string Notes { get; set; }
 
         public Guid TicketId { get; set; }
         public RepairTicket Ticket { get; set; }
-        public String OwnerId { get; set; }
+        public string OwnerId { get; set; }
         public string Owner { get; set; }
     }
 }

@@ -1,11 +1,6 @@
 ﻿/* Name:    Jovany Romo
  * Date:    7/5/2021
- * Summary: 
- * 
- * Inputs:  
- *  
- * Outputs:    
- * 
+ * Summary: RepairTicket Model class for the data of a Repair Ticket item
  */
 
 using System;
@@ -21,6 +16,9 @@ namespace TheDeepOTools.Models
         public string Title { get; set; }
         public string Description { get; set; }
         private int charLimit = 10;
+        /// <summary>
+        /// A limiter for during the index view of all of the repair tickets in the database.
+        /// </summary>
         public string DescLimit
         {
             get
@@ -31,6 +29,9 @@ namespace TheDeepOTools.Models
                     return Description;
             }
         }
+        /// <summary>
+        /// A limiter for during the index view of all of the repair tickets in the database.
+        /// </summary>
         public string TitleLimit
         {
             get

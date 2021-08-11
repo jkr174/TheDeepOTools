@@ -1,11 +1,6 @@
 ﻿/* Name:    Jovany Romo
- * Date:    7/5/2021
- * Summary: 
- * 
- * Inputs:  
- *  
- * Outputs:    
- * 
+ * Date:    7/26/2021
+ * Summary: ViewModel of listing a user's roles.
  */
 
 namespace TheDeepOTools.Models

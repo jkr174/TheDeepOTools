@@ -82,7 +82,7 @@ namespace TheDeepOTools.Controllers
         /// <summary>
         /// Used to get a detailed view of an item.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Inventory item ID</param>
         /// <returns>
         /// Returns a view of the item's details.
         /// </returns>
@@ -119,7 +119,7 @@ namespace TheDeepOTools.Controllers
         /// <summary>
         /// Method of allowing the user to add a new item into the inventory database.
         /// </summary>
-        /// <param name="inventory"></param>
+        /// <param name="inventory">Inventory Model</param>
         /// <returns>
         /// Assuming the user does not input invalid information,
         /// It finally adds the item to the database and returns the Index View.
@@ -143,7 +143,7 @@ namespace TheDeepOTools.Controllers
         /// <summary>
         /// The GET method for editing an item.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Inventory ID</param>
         /// <returns>
         /// If the item is found,
         /// it returns the item to the POST method.
@@ -169,8 +169,8 @@ namespace TheDeepOTools.Controllers
         /// <summary>
         /// Method of allowing a user to edit information about an item.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="inventory"></param>
+        /// <param name="id">Inventory ID</param>
+        /// <param name="inventory">Inventory Model</param>
         /// <returns>
         /// If the item is found,
         /// It saves the new information about the item in the database.
@@ -213,7 +213,7 @@ namespace TheDeepOTools.Controllers
         /// <summary>
         /// The GET method of deleting an item.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Inventory ID</param>
         /// <returns>
         /// If the item is found,
         /// It sends the item to the POST method.
@@ -241,7 +241,7 @@ namespace TheDeepOTools.Controllers
         /// <summary>
         /// POST method of deleting an item from the inventory database.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Inventory ID</param>
         /// <returns>
         /// Deletes the item from inventory and returns the Index View.
         /// </returns>

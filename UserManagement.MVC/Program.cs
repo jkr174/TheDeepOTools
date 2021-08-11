@@ -1,11 +1,6 @@
 /* Name:    Jovany Romo
  * Date:    6/3/2021
- * Summary: 
- * 
- * Inputs:  
- *  
- * Outputs:    
- * 
+ * Summary: Default MVC class, however I decided to seed the database from here instead of in the startup class to keep the code tidy.
  */
 
 using System;

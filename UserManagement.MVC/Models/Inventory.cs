@@ -1,11 +1,6 @@
 ﻿/* Name:    Jovany Romo
- * Date:    7/5/2021
- * Summary: 
- * 
- * Inputs:  
- *  
- * Outputs:    
- * 
+ * Date:    6/3/2021
+ * Summary: Inventory Model class for the data of an inventory item. 
  */
 
 using System;

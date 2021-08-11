@@ -1,11 +1,8 @@
 ﻿/* Name:    Jovany Romo
- * Date:    7/5/2021
- * Summary: 
+ * Date:    7/26/2021
+ * Summary: User class to use for Identity.
  * 
- * Inputs:  
- *  
- * Outputs:    
- * 
+ * Outputs: Get's and Set's the user's name, username, and profile picture.
  */
 
 using Microsoft.AspNetCore.Identity;

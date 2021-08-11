@@ -1,11 +1,9 @@
 ﻿/* Name:    Jovany Romo
  * Date:    7/5/2021
- * Summary: 
+ * Summary: Seed class in order to seed the web application with data instead of being empty.
  * 
- * Inputs:  
- *  
- * Outputs:    
- * 
+ * Inputs:  When the application is first initalized.
+ * Outputs: Loads the database with pre-loaded data.
  */
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +18,7 @@ namespace TheDeepOTools.Data
     public static class ContextSeed
     {
         /// <summary>
-        /// In the 
+        /// In the Program class, this method is called upon to add a repair ticket along with items in the inventory database.
         /// </summary>
         /// <param name="serviceProvider"></param>
         public static void Initialize(IServiceProvider serviceProvider)
@@ -160,26 +158,29 @@ namespace TheDeepOTools.Data
                 }
             }
         }
+
         /// <summary>
-        /// 
+        /// Seeds the application with default roles.
         /// </summary>
-        /// <param name="userManager"></param>
         /// <param name="roleManager"></param>
-        /// <returns></returns>
+        /// <returns>
+        /// The web application now has default roles.
+        /// </returns>
         public static async Task SeedRolesAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
-            //Seed Roles
             await roleManager.CreateAsync(new IdentityRole(Enums.Roles.Manager.ToString()));
             await roleManager.CreateAsync(new IdentityRole(Enums.Roles.Admin.ToString()));
             await roleManager.CreateAsync(new IdentityRole(Enums.Roles.FloorAssoicate.ToString()));
             await roleManager.CreateAsync(new IdentityRole(Enums.Roles.RepairTech.ToString()));
         }
+
         /// <summary>
         /// Seeds the "super user"
         /// </summary>
-        /// <param name="userManager"></param>
-        /// <param name="roleManager"></param>
-        /// <returns></returns>
+        /// <param name="userManager">Uses the application user class for identity.</param>
+        /// <returns>
+        /// Seeds the applcation with a default "SuperAdmin" user.
+        /// </returns>
         public static async Task SeedSuperAdminAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             //Seed Default User

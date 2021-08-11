@@ -85,7 +85,7 @@ namespace TheDeepOTools.Controllers
         /// <summary>
         /// Used to get a detailed view of a ticket.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Repair Ticket ID</param>
         /// <returns>
         /// Returns a view of the ticket's details.
         /// </returns>
@@ -133,10 +133,10 @@ namespace TheDeepOTools.Controllers
         }
 
         /// <summary>
-        /// Method to get a list of items that are in inventory
+        /// Method to get a list of items that are in inventory.
         /// </summary>
         /// <returns>
-        /// 
+        /// Returns a list of items that are in inventory.
         /// </returns>
         [Authorize(Roles = "FloorAssociate")]
         [Authorize(Roles = "RepairTech")]
@@ -158,10 +158,12 @@ namespace TheDeepOTools.Controllers
 
         // POST: RepairTickets/Create
         /// <summary>
-        /// 
+        /// POST Method of creating a new repair ticekt.
         /// </summary>
-        /// <param name="repairTicket"></param>
-        /// <returns></returns>
+        /// <param name="repairTicket">Repair Ticket Model</param>
+        /// <returns>
+        /// Creates a new ticket and returns the user to the Index View.
+        /// </returns>
         [Authorize(Roles = "FloorAssociate")]
         [Authorize(Roles = "RepairTech")]
         [Authorize(Roles = "Admin")]
@@ -182,10 +184,13 @@ namespace TheDeepOTools.Controllers
 
         // GET: RepairTickets/Edit/5
         /// <summary>
-        /// 
+        /// GET Method of editing an item.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Repair Ticket ID</param>
+        /// <returns>
+        /// If the repair ticket is found,
+        /// the repair ticket is sent to the POST method.
+        /// </returns>
         [Authorize(Roles = "FloorAssociate")]
         [Authorize(Roles = "RepairTech")]
         [Authorize(Roles = "Admin")]
@@ -207,11 +212,14 @@ namespace TheDeepOTools.Controllers
 
         // POST: RepairTickets/Edit/5
         /// <summary>
-        /// 
+        /// POST Method for editing a repair ticket.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="repairTicket"></param>
-        /// <returns></returns>
+        /// <param name="id">Repair Ticket ID</param>
+        /// <param name="repairTicket">Repair Ticket Model</param>
+        /// <returns>
+        /// If the repair ticket is found,
+        /// Saves the new information in the database.
+        /// </returns>
         [Authorize(Roles = "FloorAssociate")]
         [Authorize(Roles = "RepairTech")]
         [Authorize(Roles = "Admin")]
@@ -250,10 +258,13 @@ namespace TheDeepOTools.Controllers
 
         // GET: RepairTickets/Delete/5
         /// <summary>
-        /// 
+        /// GET Method of deleting a repair ticket.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Repair Ticket ID</param>
+        /// <returns>
+        /// If the repair ticket id is found,
+        /// It gets sent to the Delete POST method.
+        /// </returns>
         [Authorize(Roles = "Admin")]
         [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Delete(Guid? id)
@@ -275,10 +286,12 @@ namespace TheDeepOTools.Controllers
 
         // POST: RepairTickets/Delete/5
         /// <summary>
-        /// 
+        /// POST Method of deleting a Repair Ticket
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">Repair Ticket ID</param>
+        /// <returns>
+        /// If the repair ticket is found, then it is deleted from the database.
+        /// </returns>
         [Authorize(Roles = "Admin")]
         [Authorize(Roles = "Manager")]
         [HttpPost, ActionName("Delete")]

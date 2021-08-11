@@ -1,11 +1,6 @@
 ﻿/* Name:    Jovany Romo
  * Date:    7/5/2021
- * Summary: 
- * 
- * Inputs:  
- *  
- * Outputs:    
- * 
+ * Summary: Used for search functionality in the index view of the web application.
  */
 
 using Microsoft.AspNetCore.Mvc.Rendering;

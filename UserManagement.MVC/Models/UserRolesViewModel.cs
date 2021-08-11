@@ -1,11 +1,6 @@
 ﻿/* Name:    Jovany Romo
  * Date:    7/5/2021
- * Summary: 
- * 
- * Inputs:  
- *  
- * Outputs:    
- * 
+ * Summary: ViewModel to list a user's information.
  */
 
 using System.Collections.Generic;

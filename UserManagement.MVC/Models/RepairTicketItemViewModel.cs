@@ -1,11 +1,6 @@
 ﻿/* Name:    Jovany Romo
- * Date:    7/5/2021
- * Summary: 
- * 
- * Inputs:  
- *  
- * Outputs:    
- * 
+ * Date:    8/3/2021
+ * Summary: Used for listing items that are saved in inventory when creating a repair ticket.
  */
 
 using System.Collections.Generic;

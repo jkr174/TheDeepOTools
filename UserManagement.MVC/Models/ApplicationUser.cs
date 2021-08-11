@@ -1,8 +1,14 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿/* Name:    Jovany Romo
+ * Date:    7/5/2021
+ * Summary: 
+ * 
+ * Inputs:  
+ *  
+ * Outputs:    
+ * 
+ */
+
+using Microsoft.AspNetCore.Identity;
 
 namespace TheDeepOTools.Models
 {

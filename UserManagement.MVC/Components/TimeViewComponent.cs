@@ -1,8 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿/* Name:    Jovany Romo
+ * Date:    8/9/2021
+ * Summary: Basic method in order to get the current date and time.
+ * 
+ * Input:   DateTime.Now
+ * Output:  DateTime.Now
+ */
+
+using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TheDeepOTools.Components
 {

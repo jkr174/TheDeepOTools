@@ -1,7 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿/* Name:    Jovany Romo
+ * Date:    7/5/2021
+ * Summary: 
+ * 
+ * Inputs:  
+ *  
+ * Outputs:    
+ * 
+ */
 
 namespace TheDeepOTools.Enums
 {

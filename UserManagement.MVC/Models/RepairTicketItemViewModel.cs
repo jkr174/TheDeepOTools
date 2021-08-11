@@ -1,8 +1,14 @@
-﻿using System;
+﻿/* Name:    Jovany Romo
+ * Date:    7/5/2021
+ * Summary: 
+ * 
+ * Inputs:  
+ *  
+ * Outputs:    
+ * 
+ */
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace TheDeepOTools.Models

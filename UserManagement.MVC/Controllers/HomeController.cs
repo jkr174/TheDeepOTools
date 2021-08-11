@@ -1,8 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/* Name:    Jovany Romo
+ * Date:    6/3/2021
+ * Summary: Default HomeController that is primarily used to return the homepage or catch any errors.
+ * 
+ * Input:   When the application loads the homepage
+ * Output:  Returns the appropiate Views
+ */
+
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using TheDeepOTools.Models;

@@ -1,6 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿/* Name:    Jovany Romo
+ * Date:    7/5/2021
+ * Summary: 
+ * 
+ * Inputs:  
+ *  
+ * Outputs:    
+ * 
+ */
+
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

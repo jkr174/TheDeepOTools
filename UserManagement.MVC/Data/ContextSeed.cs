@@ -1,8 +1,16 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿/* Name:    Jovany Romo
+ * Date:    7/5/2021
+ * Summary: 
+ * 
+ * Inputs:  
+ *  
+ * Outputs:    
+ * 
+ */
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TheDeepOTools.Models;
@@ -11,6 +19,10 @@ namespace TheDeepOTools.Data
 {
     public static class ContextSeed
     {
+        /// <summary>
+        /// In the 
+        /// </summary>
+        /// <param name="serviceProvider"></param>
         public static void Initialize(IServiceProvider serviceProvider)
         {
             using (var context = new ApplicationDbContext(
@@ -148,6 +160,12 @@ namespace TheDeepOTools.Data
                 }
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userManager"></param>
+        /// <param name="roleManager"></param>
+        /// <returns></returns>
         public static async Task SeedRolesAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             //Seed Roles
@@ -156,6 +174,12 @@ namespace TheDeepOTools.Data
             await roleManager.CreateAsync(new IdentityRole(Enums.Roles.FloorAssoicate.ToString()));
             await roleManager.CreateAsync(new IdentityRole(Enums.Roles.RepairTech.ToString()));
         }
+        /// <summary>
+        /// Seeds the "super user"
+        /// </summary>
+        /// <param name="userManager"></param>
+        /// <param name="roleManager"></param>
+        /// <returns></returns>
         public static async Task SeedSuperAdminAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             //Seed Default User

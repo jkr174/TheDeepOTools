@@ -21,7 +21,11 @@ namespace TheDeepOTools.Models
         [Required(ErrorMessage = "Please specify a category")]
         public string Category { get; set; }
         public string Subcategory { get; set; }
+        public DateTime ServiceHrs { get; set; }
         public DateTime TotalHrs { get; set; }
-
+        public DateTime StartTime { get; set; }
+        public DateTime StopTime { get; set; }
+        public bool IsInService { get; set; }
+        public bool NeedsMaintaince { get; set; }
     }
 }

@@ -1,0 +1,87 @@
+﻿@model TheDeepOTools.Models.Maintaince
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Maintaince</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ItemIdentifier" class="control-label"></label>
+                <input asp-for="ItemIdentifier" class="form-control" />
+                <span asp-validation-for="ItemIdentifier" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItemName" class="control-label"></label>
+                <input asp-for="ItemName" class="form-control" />
+                <span asp-validation-for="ItemName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subcategory" class="control-label"></label>
+                <input asp-for="Subcategory" class="form-control" />
+                <span asp-validation-for="Subcategory" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ServiceHrs" class="control-label"></label>
+                <input asp-for="ServiceHrs" class="form-control" />
+                <span asp-validation-for="ServiceHrs" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalHrs" class="control-label"></label>
+                <input asp-for="TotalHrs" class="form-control" />
+                <span asp-validation-for="TotalHrs" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartTime" class="control-label"></label>
+                <input asp-for="StartTime" class="form-control" />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StopTime" class="control-label"></label>
+                <input asp-for="StopTime" class="form-control" />
+                <span asp-validation-for="StopTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsInService" /> @Html.DisplayNameFor(model => model.IsInService)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="NeedsMaintaince" /> @Html.DisplayNameFor(model => model.NeedsMaintaince)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

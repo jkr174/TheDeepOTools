@@ -42,10 +42,7 @@ namespace TheDeepOTools.Controllers
         /// Returns a view of the Repair Tickets depending on if the user 
         /// chooses to search for something via a search string or a ticket state.
         /// </returns>
-        [Authorize(Roles = "FloorAssociate")]
-        [Authorize(Roles = "RepairTech")]
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "FloorAssociate,RepairTech,Admin,Manager")]
         public async Task<IActionResult> Index(string ticketState, string searchString)
         {
             IQueryable<string> stateQuery = from r in _context.RepairTicket
@@ -89,10 +86,7 @@ namespace TheDeepOTools.Controllers
         /// <returns>
         /// Returns a view of the ticket's details.
         /// </returns>
-        [Authorize(Roles = "FloorAssociate")]
-        [Authorize(Roles = "RepairTech")]
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "FloorAssociate,RepairTech,Admin,Manager")]
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)
@@ -117,11 +111,7 @@ namespace TheDeepOTools.Controllers
         /// <returns>
         /// Returns a new ViewModel of Repair Tickets to receive a list of items in inventory
         /// </returns>
-        [Authorize(Roles = "FloorAssociate")]
-        [Authorize(Roles = "RepairTech")]
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
-        [Authorize(Roles = "FloorAssoicate")]
+        [Authorize(Roles = "FloorAssociate,RepairTech,Admin,Manager")]
         public IActionResult Create()
         {
             var itemList = new RepairTicketItemViewModel
@@ -138,10 +128,7 @@ namespace TheDeepOTools.Controllers
         /// <returns>
         /// Returns a list of items that are in inventory.
         /// </returns>
-        [Authorize(Roles = "FloorAssociate")]
-        [Authorize(Roles = "RepairTech")]
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "FloorAssociate,RepairTech,Admin,Manager")]
         private IEnumerable<SelectListItem> GetItems()
         {
             List<SelectListItem> items = _context.Inventory
@@ -164,10 +151,7 @@ namespace TheDeepOTools.Controllers
         /// <returns>
         /// Creates a new ticket and returns the user to the Index View.
         /// </returns>
-        [Authorize(Roles = "FloorAssociate")]
-        [Authorize(Roles = "RepairTech")]
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "FloorAssociate,RepairTech,Admin,Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,Description,TicketState,OwnerId,Owner")] RepairTicket repairTicket)
@@ -191,10 +175,7 @@ namespace TheDeepOTools.Controllers
         /// If the repair ticket is found,
         /// the repair ticket is sent to the POST method.
         /// </returns>
-        [Authorize(Roles = "FloorAssociate")]
-        [Authorize(Roles = "RepairTech")]
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "FloorAssociate,RepairTech,Admin,Manager")]
         public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null)
@@ -220,10 +201,7 @@ namespace TheDeepOTools.Controllers
         /// If the repair ticket is found,
         /// Saves the new information in the database.
         /// </returns>
-        [Authorize(Roles = "FloorAssociate")]
-        [Authorize(Roles = "RepairTech")]
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "FloorAssociate,RepairTech,Admin,Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, [Bind("Id,Title,Description,TicketState,OwnerId,Owner")] RepairTicket repairTicket)
@@ -265,8 +243,7 @@ namespace TheDeepOTools.Controllers
         /// If the repair ticket id is found,
         /// It gets sent to the Delete POST method.
         /// </returns>
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null)
@@ -292,8 +269,7 @@ namespace TheDeepOTools.Controllers
         /// <returns>
         /// If the repair ticket is found, then it is deleted from the database.
         /// </returns>
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin,Manager")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)

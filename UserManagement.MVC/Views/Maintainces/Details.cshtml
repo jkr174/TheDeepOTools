@@ -1,0 +1,84 @@
+﻿@model TheDeepOTools.Models.Maintaince
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Maintaince</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemIdentifier)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ItemIdentifier)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ItemName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Subcategory)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Subcategory)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceHrs)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ServiceHrs)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalHrs)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalHrs)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StopTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StopTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsInService)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsInService)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NeedsMaintaince)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NeedsMaintaince)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ItemID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

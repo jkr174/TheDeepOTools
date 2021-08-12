@@ -41,10 +41,7 @@ namespace TheDeepOTools.Controllers
         /// Returns a view of the inventory depending on if the user 
         /// chooses to search for something via a search string or a category.
         /// </returns>
-        [Authorize(Roles ="FloorAssociate")]
-        [Authorize(Roles ="RepairTech")]
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "FloorAssociate,RepairTech,AdminManager")]
         public async Task<IActionResult> Index(string searchString, string inventoryCategory)
         {
             IQueryable<string> genreQuery = from i in _context.Inventory
@@ -86,10 +83,7 @@ namespace TheDeepOTools.Controllers
         /// <returns>
         /// Returns a view of the item's details.
         /// </returns>
-        [Authorize(Roles = "FloorAssociate")]
-        [Authorize(Roles = "RepairTech")]
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "FloorAssociate,RepairTech,AdminManager")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -108,8 +102,7 @@ namespace TheDeepOTools.Controllers
         }
 
         // GET: Inventories/Create
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin,Manager")]
         public IActionResult Create()
         {
             return View();
@@ -126,8 +119,7 @@ namespace TheDeepOTools.Controllers
         /// </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> Create([Bind("ItemID,ItemIdentifier,ItemName,Description,Price,Category,Subcategory,OnHandQty,OutQty,TotalQty")] Inventory inventory)
         {
             if (ModelState.IsValid)
@@ -148,8 +140,7 @@ namespace TheDeepOTools.Controllers
         /// If the item is found,
         /// it returns the item to the POST method.
         /// </returns>
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -175,8 +166,7 @@ namespace TheDeepOTools.Controllers
         /// If the item is found,
         /// It saves the new information about the item in the database.
         /// </returns>
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin,Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ItemID,ItemIdentifier,ItemName,Description,Price,Category,Subcategory,OnHandQty,OutQty,TotalQty")] Inventory inventory)
@@ -218,8 +208,7 @@ namespace TheDeepOTools.Controllers
         /// If the item is found,
         /// It sends the item to the POST method.
         /// </returns>
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -245,8 +234,7 @@ namespace TheDeepOTools.Controllers
         /// <returns>
         /// Deletes the item from inventory and returns the Index View.
         /// </returns>
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin,Manager")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

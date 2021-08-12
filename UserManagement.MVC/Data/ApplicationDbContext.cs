@@ -52,5 +52,6 @@ namespace TheDeepOTools.Data
         }
         public DbSet<Inventory> Inventory { get; set; }
         public DbSet<RepairTicket> RepairTicket { get; set; }
+        public DbSet<TheDeepOTools.Models.Maintenance> Maintenance { get; set; }
     }
 }

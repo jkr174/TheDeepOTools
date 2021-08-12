@@ -34,8 +34,7 @@ namespace TheDeepOTools.Controllers
         /// <returns>
         /// Returns a list view of all of the users in the application.
         /// </returns>
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> Index()
         {
             var users = await _userManager.Users.ToListAsync();
@@ -60,8 +59,7 @@ namespace TheDeepOTools.Controllers
         /// <returns>
         /// User information is sent to the POST method.
         /// </returns>
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> Manage(string userId)
         {
             ViewBag.userId = userId;
@@ -102,8 +100,7 @@ namespace TheDeepOTools.Controllers
         /// If the user is found,
         /// An authorized user will be able to manage the roles of other users of the web application.
         /// </returns>
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin,Manager")]
         [HttpPost]
         public async Task<IActionResult> Manage(List<ManageUserRolesViewModel> model, string userId)
         {
@@ -135,8 +132,7 @@ namespace TheDeepOTools.Controllers
         /// <returns>
         /// Returns a list of a user's roles.
         /// </returns>
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin,Manager")]
         private async Task<List<string>> GetUserRoles(ApplicationUser user)
         {
             return new List<string>(await _userManager.GetRolesAsync(user));

@@ -1,6 +1,6 @@
 ﻿/* Name:    Jovany Romo
- * Date:    6/3/2021
- * Summary: Inventory Model class for the data of an inventory item. 
+ * Date:    8/10/2021
+ * Summary: Maintenance Model class for the data of an maintence ticket. 
  */
 
 using System;
@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TheDeepOTools.Models
 {
-    public class Maintaince
+    public class Maintenance
     {
         [Key]
         public int ItemID { get; set; }

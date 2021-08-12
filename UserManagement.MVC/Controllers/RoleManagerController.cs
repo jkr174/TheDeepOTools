@@ -28,8 +28,7 @@ namespace TheDeepOTools.Controllers
         /// <returns>
         /// If the user is authorized, then they can view all of the roles in the web application.
         /// </returns>
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> Index()
         {
             var roles = await _roleManager.Roles.ToListAsync();
@@ -44,8 +43,7 @@ namespace TheDeepOTools.Controllers
         /// Once a role is created, it is saved to the web application.
         /// </returns>
         [HttpPost]
-        [Authorize(Roles = "Admin")]
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> AddRole(string roleName)
         {
             if (roleName != null)

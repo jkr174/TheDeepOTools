@@ -1,4 +1,4 @@
-﻿@model TheDeepOTools.Models.Inventory
+﻿@model TheDeepOTools.Models.Maintenance
 
 @{
     ViewData["Title"] = "Details";
@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Inventory</h4>
+    <h4>Maintenance</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -29,12 +29,6 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
         <dt>
-            Price
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt>
             Category
         </dt>
         <dd>
@@ -47,29 +41,44 @@
             @Html.DisplayFor(model => model.Subcategory)
         </dd>
         <dt>
-            On-hand Qty
+            Service Hours
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.OnHandQty)
+            @Html.DisplayFor(model => model.ServiceHrs)
         </dd>
         <dt>
-            Service Qty
+            Total Hours
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.OutQty)
+            @Html.DisplayFor(model => model.TotalHrs)
         </dd>
         <dt>
-            Total Qty
+            Start Time
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.TotalQty)
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+        <dt>
+            Stop Time
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StopTime)
+        </dd>
+        <dt>
+            In Service(?)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsInService)
+        </dd>
+        <dt>
+            Needs Maintaince(?)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NeedsMaintaince)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ItemID">Edit</a>
-    <br />
-    <a asp-action="Checkout">Checkout</a>
-    <br />
+    <a asp-action="Edit" asp-route-id="@Model.ItemID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

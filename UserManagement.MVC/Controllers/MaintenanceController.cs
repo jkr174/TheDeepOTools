@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -20,12 +21,15 @@ namespace TheDeepOTools.Controllers
         }
 
         // GET: Maintenance
+        [Authorize(Roles = "FloorAssociate,RepairTech,Admin,Manager")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Maintenance.ToListAsync());
         }
 
+
         // GET: Maintenance/Details/5
+        [Authorize(Roles = "FloorAssociate,RepairTech,Admin,Manager")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,6 +48,7 @@ namespace TheDeepOTools.Controllers
         }
 
         // GET: Maintenance/Create
+        [Authorize(Roles = "FloorAssociate,RepairTech,Admin,Manager")]
         public IActionResult Create()
         {
             var itemList = new MaintenanceInventoryViewModel
@@ -53,6 +58,7 @@ namespace TheDeepOTools.Controllers
 
             return View(itemList);
         }
+        [Authorize(Roles = "FloorAssociate,RepairTech,Admin,Manager")]
         private IEnumerable<SelectListItem> GetItems()
         {
             List<SelectListItem> items = _context.Inventory
@@ -70,6 +76,7 @@ namespace TheDeepOTools.Controllers
         // POST: Maintenance/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "FloorAssociate,RepairTech,Admin,Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ItemID,ItemIdentifier,ItemName,Description,Category,Subcategory,ServiceHrs,TotalHrs,ReqMaintenanceHrs,HrsSinceLastService,StartTime,StopTime,IsInService,NeedsMaintaince")] Maintenance maintenance)
@@ -83,7 +90,18 @@ namespace TheDeepOTools.Controllers
             return View(maintenance);
         }
 
+        [Authorize(Roles = "FloorAssociate,RepairTech,Admin,Manager")]
+        public async Task<IActionResult> Start(int id, Maintenance maintenance)
+        {
+                    maintenance.StartTime = DateTime.Now;
+                    _context.Update(maintenance);
+                    await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
+        }
+
         // GET: Maintenance/Edit/5
+        [Authorize(Roles = "FloorAssociate,RepairTech,Admin,Manager")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -104,6 +122,7 @@ namespace TheDeepOTools.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "FloorAssociate,RepairTech,Admin,Manager")]
         public async Task<IActionResult> Edit(int id, [Bind("ItemID,ItemIdentifier,ItemName,Description,Category,Subcategory,ServiceHrs,TotalHrs,ReqMaintenanceHrs,HrsSinceLastService,StartTime,StopTime,IsInService,NeedsMaintaince")] Maintenance maintenance)
         {
             if (id != maintenance.ItemID)
@@ -135,6 +154,7 @@ namespace TheDeepOTools.Controllers
         }
 
         // GET: Maintenance/Delete/5
+        [Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -153,6 +173,7 @@ namespace TheDeepOTools.Controllers
         }
 
         // POST: Maintenance/Delete/5
+        [Authorize(Roles = "Admin,Manager")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

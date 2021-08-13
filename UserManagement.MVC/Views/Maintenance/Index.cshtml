@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<TheDeepOTools.Models.Maintenance>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Maintenance";
 }
 
 <h2>Maintenance</h2>
@@ -79,8 +79,10 @@
                 @Html.DisplayFor(modelItem => item.NeedsMaintaince)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ItemID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ItemID">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.ItemID">Edit</a>
+                <br />
+                <a asp-action="Details" asp-route-id="@item.ItemID">Details</a>
+                <br />
                 <a asp-action="Delete" asp-route-id="@item.ItemID">Delete</a>
             </td>
         </tr>

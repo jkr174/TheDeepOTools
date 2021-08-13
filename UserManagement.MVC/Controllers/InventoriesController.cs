@@ -41,7 +41,7 @@ namespace TheDeepOTools.Controllers
         /// Returns a view of the inventory depending on if the user 
         /// chooses to search for something via a search string or a category.
         /// </returns>
-        [Authorize(Roles = "FloorAssociate,RepairTech,AdminManager")]
+        [Authorize(Roles = "FloorAssociate,RepairTech,Admin,Manager")]
         public async Task<IActionResult> Index(string searchString, string inventoryCategory)
         {
             IQueryable<string> genreQuery = from i in _context.Inventory
@@ -83,7 +83,7 @@ namespace TheDeepOTools.Controllers
         /// <returns>
         /// Returns a view of the item's details.
         /// </returns>
-        [Authorize(Roles = "FloorAssociate,RepairTech,AdminManager")]
+        [Authorize(Roles = "FloorAssociate,RepairTech,Admin,Manager")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)

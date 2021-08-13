@@ -15,9 +15,20 @@
 	<ItemGroup>
 	  <Compile Remove="Migrations\20210802010247_InventoryDb.cs" />
 	  <Compile Remove="Migrations\20210802010247_InventoryDb.Designer.cs" />
+	  <Compile Remove="Migrations\20210812223458_Maintenance.cs" />
+	  <Compile Remove="Migrations\20210812223458_Maintenance.Designer.cs" />
+	  <Compile Remove="Migrations\20210813003728_Maintenance.cs" />
+	  <Compile Remove="Migrations\20210813003728_Maintenance.Designer.cs" />
+	  <Compile Remove="Migrations\20210813004038_Maintenance.cs" />
+	  <Compile Remove="Migrations\20210813004038_Maintenance.Designer.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Content Remove="Views\Shared\Components\DateTimeNow\Default.cshtml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="Views\Shared\Components\DateTimeNow\Default.cshtml" />
 	  <None Include="Views\Shared\Components\Time\Default.cshtml" />
 	</ItemGroup>
 

@@ -14,14 +14,9 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ItemID" />
             <div class="form-group">
-                <label asp-for="ItemIdentifier" class="control-label">Item Identifier</label>
+                <label asp-for="ItemIdentifier" class="control-label"></label>
                 <input asp-for="ItemIdentifier" class="form-control" />
                 <span asp-validation-for="ItemIdentifier" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ItemName" class="control-label">Item Name</label>
-                <input asp-for="ItemName" class="form-control" />
-                <span asp-validation-for="ItemName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
@@ -39,36 +34,46 @@
                 <span asp-validation-for="Subcategory" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ServiceHrs" class="control-label">Service Hours</label>
+                <label asp-for="ServiceHrs" class="control-label"></label>
                 <input asp-for="ServiceHrs" class="form-control" />
                 <span asp-validation-for="ServiceHrs" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TotalHrs" class="control-label">Total Hours</label>
+                <label asp-for="TotalHrs" class="control-label"></label>
                 <input asp-for="TotalHrs" class="form-control" />
                 <span asp-validation-for="TotalHrs" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="StartTime" class="control-label">Start Time</label>
+                <label asp-for="ReqMaintenanceHrs" class="control-label"></label>
+                <input asp-for="ReqMaintenanceHrs" class="form-control" />
+                <span asp-validation-for="ReqMaintenanceHrs" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HrsSinceLastService" class="control-label"></label>
+                <input asp-for="HrsSinceLastService" class="form-control" />
+                <span asp-validation-for="HrsSinceLastService" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartTime" class="control-label"></label>
                 <input asp-for="StartTime" class="form-control" />
                 <span asp-validation-for="StartTime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="StopTime" class="control-label">Stop Time</label>
+                <label asp-for="StopTime" class="control-label"></label>
                 <input asp-for="StopTime" class="form-control" />
                 <span asp-validation-for="StopTime" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                        <input asp-for="IsInService" /> @Html.DisplayNameFor(model => model.IsInService)
+                        <input asp-for="IsInService" /> In Service(?)
                     </label>
                 </div>
             </div>
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                        <input asp-for="NeedsMaintaince" /> @Html.DisplayNameFor(model => model.NeedsMaintaince)
+                        <input asp-for="NeedsMaintaince" /> Needs Maintaince(?)
                     </label>
                 </div>
             </div>

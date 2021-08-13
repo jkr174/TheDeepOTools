@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -47,29 +46,13 @@ namespace TheDeepOTools.Controllers
         // GET: Maintenance/Create
         public IActionResult Create()
         {
-            var itemList = new RepairTicketItemViewModel
+            var itemList = new MaintenanceInventoryViewModel
             {
                 ListItems = GetItems()
             };
 
             return View(itemList);
         }
-
-        // POST: Maintenance/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ItemID,ItemIdentifier,ItemName,Description,Category,Subcategory,ServiceHrs,TotalHrs,StartTime,StopTime,IsInService,NeedsMaintaince")] Maintenance maintenance)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(maintenance);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(maintenance);
-        }
-
-        [Authorize(Roles = "FloorAssociate,RepairTech,Admin,Manager")]
         private IEnumerable<SelectListItem> GetItems()
         {
             List<SelectListItem> items = _context.Inventory
@@ -82,6 +65,22 @@ namespace TheDeepOTools.Controllers
                 }).ToList();
 
             return new SelectList(items, "Value", "Text");
+        }
+
+        // POST: Maintenance/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("ItemID,ItemIdentifier,ItemName,Description,Category,Subcategory,ServiceHrs,TotalHrs,ReqMaintenanceHrs,HrsSinceLastService,StartTime,StopTime,IsInService,NeedsMaintaince")] Maintenance maintenance)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(maintenance);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(maintenance);
         }
 
         // GET: Maintenance/Edit/5
@@ -101,9 +100,11 @@ namespace TheDeepOTools.Controllers
         }
 
         // POST: Maintenance/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ItemID,ItemIdentifier,ItemName,Description,Category,Subcategory,ServiceHrs,TotalHrs,StartTime,StopTime,IsInService,NeedsMaintaince")] Maintenance maintenance)
+        public async Task<IActionResult> Edit(int id, [Bind("ItemID,ItemIdentifier,ItemName,Description,Category,Subcategory,ServiceHrs,TotalHrs,ReqMaintenanceHrs,HrsSinceLastService,StartTime,StopTime,IsInService,NeedsMaintaince")] Maintenance maintenance)
         {
             if (id != maintenance.ItemID)
             {

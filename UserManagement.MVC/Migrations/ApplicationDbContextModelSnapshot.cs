@@ -279,12 +279,13 @@ namespace TheDeepOTools.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Category")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<TimeSpan?>("HrsSinceLastService")
+                        .HasColumnType("time");
 
                     b.Property<bool>("IsInService")
                         .HasColumnType("bit");
@@ -293,27 +294,26 @@ namespace TheDeepOTools.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ItemName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("NeedsMaintaince")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("ServiceHrs")
+                    b.Property<TimeSpan?>("ReqMaintenanceHrs")
+                        .HasColumnType("time");
+
+                    b.Property<TimeSpan?>("ServiceHrs")
+                        .HasColumnType("time");
+
+                    b.Property<DateTime?>("StartTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("StopTime")
+                    b.Property<DateTime?>("StopTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Subcategory")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("TotalHrs")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeSpan?>("TotalHrs")
+                        .HasColumnType("time");
 
                     b.HasKey("ItemID");
 

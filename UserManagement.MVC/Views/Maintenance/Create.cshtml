@@ -20,11 +20,6 @@
                 <span asp-validation-for="ItemIdentifier" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ItemName" class="control-label">Item Name</label>
-                <input asp-for="ItemName" class="form-control" />
-                <span asp-validation-for="ItemName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
@@ -50,13 +45,23 @@
                 <span asp-validation-for="TotalHrs" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="ReqMaintenanceHrs" class="control-label">Required Maintenance Hours</label>
+                <input asp-for="ReqMaintenanceHrs" class="form-control" />
+                <span asp-validation-for="ReqMaintenanceHrs" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HrsSinceLastService" class="control-label">Hours Since Last Service</label>
+                <input asp-for="HrsSinceLastService" class="form-control" />
+                <span asp-validation-for="HrsSinceLastService" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="StartTime" class="control-label">Start Time</label>
-                <input asp-for="StartTime" class="form-control" />
+                <input asp-for="StartTime" value=@DateTime.Now />
                 <span asp-validation-for="StartTime" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="StopTime" class="control-label">Stop Time</label>
-                <input asp-for="StopTime" class="form-control" />
+                <input asp-for="StopTime" value=@DateTime.Now />
                 <span asp-validation-for="StopTime" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -69,7 +74,7 @@
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                        <input asp-for="NeedsMaintaince" /> Needs Maintaince(?)
+                        <input asp-for="NeedsMaintaince" /> Needs Maintenance(?)
                     </label>
                 </div>
             </div>

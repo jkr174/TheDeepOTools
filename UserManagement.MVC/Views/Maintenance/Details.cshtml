@@ -17,12 +17,6 @@
             @Html.DisplayFor(model => model.ItemIdentifier)
         </dd>
         <dt>
-            Item Name
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ItemName)
-        </dd>
-        <dt>
             Description
         </dt>
         <dd>
@@ -53,6 +47,18 @@
             @Html.DisplayFor(model => model.TotalHrs)
         </dd>
         <dt>
+            Required Maintenance Hours
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ReqMaintenanceHrs)
+        </dd>
+        <dt>
+            Hours Since Last Service
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HrsSinceLastService)
+        </dd>
+        <dt>
             Start Time
         </dt>
         <dd>
@@ -65,13 +71,13 @@
             @Html.DisplayFor(model => model.StopTime)
         </dd>
         <dt>
-            In Service(?)
+            In Service (?)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.IsInService)
         </dd>
         <dt>
-            Needs Maintaince(?)
+            Needs Maintaince (?)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.NeedsMaintaince)

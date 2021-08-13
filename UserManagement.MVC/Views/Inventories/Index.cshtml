@@ -68,14 +68,17 @@
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
+                    <a asp-action="Details" asp-route-id="@item.ItemID" class="bg-primary btn btn-primary">Details</a> |
                     @if (ViewContext.HttpContext.User.IsInRole("Admin") || User.IsInRole("FloorAssoicate") || User.IsInRole("RepairTech") || User.IsInRole("Manager"))
                     {
-                        <a asp-action="Edit" asp-route-id="@item.ItemID">Edit</a>
-                        <br />
-                        <a asp-action="Delete" asp-route-id="@item.ItemID">Delete</a>
-                        <br />
+                        <a asp-action="Edit" asp-route-id="@item.ItemID" class="bg-primary btn btn-primary">Edit</a>
                     }
-                    <a asp-action="Details" asp-route-id="@item.ItemID">Details</a>
+                     |
+                    @if (ViewContext.HttpContext.User.IsInRole("Admin") || User.IsInRole("FloorAssoicate") || User.IsInRole("RepairTech") || User.IsInRole("Manager"))
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.ItemID" class="bg-danger btn btn-danger">Delete</a>
+                    }
+
                 </td>
             </tr>
         }

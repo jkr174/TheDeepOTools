@@ -13,12 +13,12 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="ItemIdentifier" class="control-label"></label>
+                <label asp-for="ItemIdentifier" class="control-label">Item Identifier</label>
                 <input asp-for="ItemIdentifier" class="form-control" />
-                <span asp-validation-for="ItemIdentifier" class="text-danger"></span>
+                <span asp-validation-for="ItemIdentifier" class="text-danger">Item Identifier</span>
             </div>
             <div class="form-group">
-                <label asp-for="ItemName" class="control-label"></label>
+                <label asp-for="ItemName" class="control-label">Item Name</label>
                 <input asp-for="ItemName" class="form-control" />
                 <span asp-validation-for="ItemName" class="text-danger"></span>
             </div>
@@ -56,17 +56,17 @@
                 <span asp-validation-for="Subcategory" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="OnHandQty" class="control-label"></label>
+                <label asp-for="OnHandQty" class="control-label">On-hand Qty</label>
                 <input asp-for="OnHandQty" class="form-control" />
                 <span asp-validation-for="OnHandQty" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="OutQty" class="control-label"></label>
+                <label asp-for="OutQty" class="control-label">Service Qty</label>
                 <input asp-for="OutQty" class="form-control" />
                 <span asp-validation-for="OutQty" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TotalQty" class="control-label"></label>
+                <label asp-for="TotalQty" class="control-label">Total Qty</label>
                 <input asp-for="TotalQty" class="form-control" />
                 <span asp-validation-for="TotalQty" class="text-danger"></span>
             </div>
@@ -78,7 +78,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="bg-primary btn btn-primary">Back to List</a>
 </div>
 
 @section Scripts {

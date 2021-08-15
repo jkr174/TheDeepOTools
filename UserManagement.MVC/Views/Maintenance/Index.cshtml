@@ -1,0 +1,89 @@
+﻿@model IEnumerable<TheDeepOTools.Models.Maintenance>
+
+@{
+    ViewData["Title"] = "Maintenance";
+}
+
+<h2>Maintenance</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Item Identifier
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Category
+            </th>
+            <th>
+                Subcategory
+            </th>
+            <th>
+                Total Hours
+            </th>
+            <th>
+                Hours Since Last Service
+            </th>
+            <th>
+                Start Time
+            </th>
+            <th>
+                Stop Time
+            </th>
+            <th>
+                In Service(?)
+            </th>
+            <th>
+                Needs Maintaince(?)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemIdentifier)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subcategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalHrs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HrsSinceLastService)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StopTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsInService)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NeedsMaintaince)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ItemID" class="bg-primary btn btn-primary">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ItemID" class="bg-primary btn btn-primary">Details</a> | 
+                <a asp-action="Delete" asp-route-id="@item.ItemID" class="bg-danger btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

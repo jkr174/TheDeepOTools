@@ -1,0 +1,90 @@
+﻿@model TheDeepOTools.Models.Maintenance
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Maintenance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Item Identifier
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ItemIdentifier)
+        </dd>
+        <dt>
+            Description
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            Category
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+        <dt>
+            Subcategory
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Subcategory)
+        </dd>
+        <dt>
+            Service Hours
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ServiceHrs)
+        </dd>
+        <dt>
+            Total Hours
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalHrs)
+        </dd>
+        <dt>
+            Required Maintenance Hours
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ReqMaintenanceHrs)
+        </dd>
+        <dt>
+            Hours Since Last Service
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HrsSinceLastService)
+        </dd>
+        <dt>
+            Start Time
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+        <dt>
+            Stop Time
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StopTime)
+        </dd>
+        <dt>
+            In Service (?)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsInService)
+        </dd>
+        <dt>
+            Needs Maintaince (?)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NeedsMaintaince)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ItemID" class="bg-primary btn btn-primary">Edit</a> |
+    <a asp-action="Index" class="bg-primary btn btn-primary">Back to List</a>
+</div>

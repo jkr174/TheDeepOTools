@@ -1,4 +1,4 @@
-﻿@model TheDeepOTools.Models.RepairTicket
+﻿@model TheDeepOTools.Models.Maintenance
 
 @{
     ViewData["Title"] = "Delete";
@@ -8,14 +8,14 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>RepairTicket</h4>
+    <h4>Maintenance</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            Title
+            Item Identifier
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Title)
+            @Html.DisplayFor(model => model.ItemIdentifier)
         </dd>
         <dt>
             Description
@@ -24,27 +24,36 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
         <dt>
-            Ticket State
+            Category
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.TicketState)
+            @Html.DisplayFor(model => model.Category)
         </dd>
         <dt>
-            Owner ID
+            Subcategory
+        </dt>
+        <dt>
+            Service Hours
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.OwnerId)
+            @Html.DisplayFor(model => model.ServiceHrs)
         </dd>
         <dt>
-            Owner
+            Total Hours
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Owner)
+            @Html.DisplayFor(model => model.TotalHrs)
+        </dd>
+        <dt>
+            Needs Maintaince(?)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NeedsMaintaince)
         </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="ItemID" />
         <input type="submit" value="Delete" class="btn btn-default" /> |
         <a asp-action="Index" class="bg-primary btn btn-primary">Back to List</a>
     </form>
